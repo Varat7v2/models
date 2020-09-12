@@ -117,7 +117,7 @@ gt_boxes = [np.asarray([[0.03938889, 0.145     , 1.        , 1.        ]]), np.a
        [0.46772222, 0.44736842, 1.        , 0.95614035]]), np.asarray([[0.12938889, 0.0025    , 0.99772222, 1.        ]]), np.asarray([[0.02772222, 0.24921875, 1.        , 0.86359375]]), np.asarray([[0.11772222, 0.08125   , 0.91772222, 0.92916667]]), np.asarray([[0.09772222, 0.18984375, 1.        , 0.62109375]]), np.asarray([[0.02772222, 0.0328125 , 1.        , 0.95109375]]), np.asarray([[0.13105555, 0.47296875, 0.83438889, 0.86671875]]), np.asarray([[0.19438889, 0.05833333, 0.82438889, 0.93333333]]), np.asarray([[0.35605555, 0.05083333, 0.81772222, 0.95866666]]), np.asarray([[0.17605555, 0.2784375 , 1.        , 0.72921875]]), np.asarray([[0.10772222, 0.00416667, 0.90438889, 0.47291667],
        [0.11105555, 0.50416667, 0.89438889, 0.99583333]]), np.asarray([[0.07605555, 0.25625   , 1.        , 0.70625   ]]), np.asarray([[0.00438889, 0.18958333, 1.        , 0.93125   ]]), np.asarray([[0.10605555, 0.034375  , 1.        , 0.78515625]]), np.asarray([[0.06772222, 0.38916667, 0.94772222, 0.77666667]])]
 print(len(gt_boxes))
-sys.exit(0)
+# sys.exit(0)
 
 # PREPARE DATA FOR TRAINING
 # By convention, our non-background classes start counting at 1.
@@ -153,10 +153,8 @@ for idx in range(20):
       category_index)
 plt.show()
 
-
 # Create model and restore weights for all but last layer
 # Download the checkpoint and put it into models/research/object_detection/test_data/
-
 os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
 os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
 os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
