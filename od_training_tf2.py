@@ -111,7 +111,7 @@ plt.show()
 # ANNOTATE IMAGES WITH BOUNDING BOXES
 gt_boxes = []
 # If want to annotate manually
-colab_utils.annotate(train_images_np, box_storage_pointer=gt_boxes)
+# colab_utils.annotate(train_images_np, box_storage_pointer=gt_boxes)
 # If don't want to annotate
 gt_boxes = [np.asarray([[0.03938889, 0.145     , 1.        , 1.        ]]), np.asarray([[0.22438889, 0.21875   , 0.76272222, 0.82375   ]]), np.asarray([[0.17105555, 0.        , 0.94772222, 0.77      ]]), np.asarray([[0.15938889, 0.06916667, 0.87938889, 0.9425    ]]), np.asarray([[0.05438889, 0.03958333, 0.91772222, 0.87708333]]), np.asarray([[0.01438889, 0.00328947, 0.85272222, 0.56030702],
        [0.46772222, 0.44736842, 1.        , 0.95614035]]), np.asarray([[0.12938889, 0.0025    , 0.99772222, 1.        ]]), np.asarray([[0.02772222, 0.24921875, 1.        , 0.86359375]]), np.asarray([[0.11772222, 0.08125   , 0.91772222, 0.92916667]]), np.asarray([[0.09772222, 0.18984375, 1.        , 0.62109375]]), np.asarray([[0.02772222, 0.0328125 , 1.        , 0.95109375]]), np.asarray([[0.13105555, 0.47296875, 0.83438889, 0.86671875]]), np.asarray([[0.19438889, 0.05833333, 0.82438889, 0.93333333]]), np.asarray([[0.35605555, 0.05083333, 0.81772222, 0.95866666]]), np.asarray([[0.17605555, 0.2784375 , 1.        , 0.72921875]]), np.asarray([[0.10772222, 0.00416667, 0.90438889, 0.47291667],
