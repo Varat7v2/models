@@ -97,8 +97,7 @@ ENV/
 # For mac
 .DS_Store
 
-
-research/object_detection/test_data/checkpoint/*
+models/research/object_detection/test_data/checkpoint/*
 
 
 
