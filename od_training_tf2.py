@@ -95,7 +95,7 @@ def plot_detections(image_np,
 # Load images and visualize
 train_image_dir = 'models/research/object_detection/test_images/{}/train/'.format(DATASET_PATH)
 train_images_np = []
-for i in range(1, 21):
+for i in range(1, 10):
   image_path = os.path.join(train_image_dir, DATASET_PATH + str(i) + '.jpg')
   train_images_np.append(load_image_into_numpy_array(image_path))
 
@@ -143,20 +143,19 @@ for (train_image_np, gt_box_np) in zip(train_images_np, gt_boxes):
   gt_classes_one_hot_tensors.append(tf.one_hot(zero_indexed_groundtruth_classes, num_classes))
 print('Done prepping data.')
 
-# Let's just visualize the dog images as a sanity check
-# dummy_scores = np.array([1.0], dtype=np.float32)  # give boxes a score of 100%
-dummy_scores = None
-
-plt.figure(figsize=(30, 15))
-for idx in range(20):
-  plt.subplot(3, 7, idx+1)
-  plot_detections(
-      train_images_np[idx],
-      gt_boxes[idx],
-      np.ones(shape=[gt_boxes[idx].shape[0]], dtype=np.int32),
-      dummy_scores, 
-      category_index)
-plt.show()
+# # Let's just visualize the dog images as a sanity check
+# # dummy_scores = np.array([1.0], dtype=np.float32)  # give boxes a score of 100%
+# dummy_scores = None
+# plt.figure(figsize=(30, 15))
+# for idx in range(20):
+#   plt.subplot(3, 7, idx+1)
+#   plot_detections(
+#       train_images_np[idx],
+#       gt_boxes[idx],
+#       np.ones(shape=[gt_boxes[idx].shape[0]], dtype=np.int32),
+#       dummy_scores, 
+#       category_index)
+# plt.show()
 
 # Create model and restore weights for all but last layer
 # Download the checkpoint and put it into models/research/object_detection/test_data/
