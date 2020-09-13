@@ -234,7 +234,7 @@ tf.keras.backend.set_learning_phase(True)
 
 batch_size = 8
 learning_rate = 0.01
-num_batches = 1
+num_batches = 50
 
 # Select variables in top layers to fine-tune.
 trainable_variables = detection_model.trainable_variables
