@@ -31,6 +31,8 @@ from object_detection.utils import visualization_utils as viz_utils
 from object_detection.utils import colab_utils
 from object_detection.builders import model_builder
 
+DATASET_PATH = 'person'
+
 # UTILITIES
 def load_image_into_numpy_array(path):
   """Load an image from file into a numpy array.
@@ -91,10 +93,10 @@ def plot_detections(image_np,
 
 # DATA PREPARATION
 # Load images and visualize
-train_image_dir = 'models/research/object_detection/test_images/dog/train/'
+train_image_dir = 'models/research/object_detection/test_images/{}/train/'.format(DATASET_PATH)
 train_images_np = []
 for i in range(1, 21):
-  image_path = os.path.join(train_image_dir, 'dog' + str(i) + '.jpeg')
+  image_path = os.path.join(train_image_dir, DATASET_PATH + str(i) + '.jpg')
   train_images_np.append(load_image_into_numpy_array(image_path))
 
 plt.rcParams['axes.grid'] = False
@@ -114,20 +116,20 @@ plt.show()
 # ANNOTATE IMAGES WITH BOUNDING BOXES
 gt_boxes = []
 # If want to annotate manually
-# colab_utils.annotate(train_images_np, box_storage_pointer=gt_boxes)
+colab_utils.annotate(train_images_np, box_storage_pointer=gt_boxes)
 # If don't want to annotate
-gt_boxes = [np.asarray([[0.03938889, 0.145     , 1.        , 1.        ]]), np.asarray([[0.22438889, 0.21875   , 0.76272222, 0.82375   ]]), np.asarray([[0.17105555, 0.        , 0.94772222, 0.77      ]]), np.asarray([[0.15938889, 0.06916667, 0.87938889, 0.9425    ]]), np.asarray([[0.05438889, 0.03958333, 0.91772222, 0.87708333]]), np.asarray([[0.01438889, 0.00328947, 0.85272222, 0.56030702],
-       [0.46772222, 0.44736842, 1.        , 0.95614035]]), np.asarray([[0.12938889, 0.0025    , 0.99772222, 1.        ]]), np.asarray([[0.02772222, 0.24921875, 1.        , 0.86359375]]), np.asarray([[0.11772222, 0.08125   , 0.91772222, 0.92916667]]), np.asarray([[0.09772222, 0.18984375, 1.        , 0.62109375]]), np.asarray([[0.02772222, 0.0328125 , 1.        , 0.95109375]]), np.asarray([[0.13105555, 0.47296875, 0.83438889, 0.86671875]]), np.asarray([[0.19438889, 0.05833333, 0.82438889, 0.93333333]]), np.asarray([[0.35605555, 0.05083333, 0.81772222, 0.95866666]]), np.asarray([[0.17605555, 0.2784375 , 1.        , 0.72921875]]), np.asarray([[0.10772222, 0.00416667, 0.90438889, 0.47291667],
-       [0.11105555, 0.50416667, 0.89438889, 0.99583333]]), np.asarray([[0.07605555, 0.25625   , 1.        , 0.70625   ]]), np.asarray([[0.00438889, 0.18958333, 1.        , 0.93125   ]]), np.asarray([[0.10605555, 0.034375  , 1.        , 0.78515625]]), np.asarray([[0.06772222, 0.38916667, 0.94772222, 0.77666667]])]
+# gt_boxes = [np.asarray([[0.03938889, 0.145     , 1.        , 1.        ]]), np.asarray([[0.22438889, 0.21875   , 0.76272222, 0.82375   ]]), np.asarray([[0.17105555, 0.        , 0.94772222, 0.77      ]]), np.asarray([[0.15938889, 0.06916667, 0.87938889, 0.9425    ]]), np.asarray([[0.05438889, 0.03958333, 0.91772222, 0.87708333]]), np.asarray([[0.01438889, 0.00328947, 0.85272222, 0.56030702],
+#        [0.46772222, 0.44736842, 1.        , 0.95614035]]), np.asarray([[0.12938889, 0.0025    , 0.99772222, 1.        ]]), np.asarray([[0.02772222, 0.24921875, 1.        , 0.86359375]]), np.asarray([[0.11772222, 0.08125   , 0.91772222, 0.92916667]]), np.asarray([[0.09772222, 0.18984375, 1.        , 0.62109375]]), np.asarray([[0.02772222, 0.0328125 , 1.        , 0.95109375]]), np.asarray([[0.13105555, 0.47296875, 0.83438889, 0.86671875]]), np.asarray([[0.19438889, 0.05833333, 0.82438889, 0.93333333]]), np.asarray([[0.35605555, 0.05083333, 0.81772222, 0.95866666]]), np.asarray([[0.17605555, 0.2784375 , 1.        , 0.72921875]]), np.asarray([[0.10772222, 0.00416667, 0.90438889, 0.47291667],
+#        [0.11105555, 0.50416667, 0.89438889, 0.99583333]]), np.asarray([[0.07605555, 0.25625   , 1.        , 0.70625   ]]), np.asarray([[0.00438889, 0.18958333, 1.        , 0.93125   ]]), np.asarray([[0.10605555, 0.034375  , 1.        , 0.78515625]]), np.asarray([[0.06772222, 0.38916667, 0.94772222, 0.77666667]])]
 print(len(gt_boxes))
 # sys.exit(0)
 
 # PREPARE DATA FOR TRAINING
 # By convention, our non-background classes start counting at 1.
-dog_class_id = 1
+class1_id = 1
 num_classes = 1
 
-category_index = {dog_class_id: {'id': dog_class_id, 'name': 'dog'}}
+category_index = {class1_id: {'id': class1_id, 'name': DATASET_PATH}}
 
 # CONVERT CLASS LABELS TO ONE-HOT; CONVERT EVERYTHING TO TENSORS
 label_id_offset = 1
@@ -158,9 +160,9 @@ plt.show()
 
 # Create model and restore weights for all but last layer
 # Download the checkpoint and put it into models/research/object_detection/test_data/
-os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
-os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
-os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
+# os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
+# os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
+# os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
 
 tf.keras.backend.clear_session()
 print('Building model and restoring weights for fine-tuning...', flush=True)
@@ -288,10 +290,10 @@ for idx in range(num_batches):
 print('Done fine-tuning!')
 
 # LOAD TEST IMAGES AND RUN INFERENCE WITH NEW MODEL!
-test_image_dir = 'models/research/object_detection/test_images/dog/test/'
+test_image_dir = 'models/research/object_detection/test_images/{}/test/'.format(DATASET_PATH)
 test_images_np = []
-for i in range(22, 32):
-  image_path = os.path.join(test_image_dir, 'dog' + str(i) + '.jpeg')
+for i in range(1, 13):
+  image_path = os.path.join(test_image_dir, 'test' + str(i) + '.jpg')
   test_images_np.append(np.expand_dims(
       load_image_into_numpy_array(image_path), axis=0))
 
