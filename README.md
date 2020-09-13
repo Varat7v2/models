@@ -1,3 +1,7 @@
+For direct API 2.0 --> https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md
+
+For direct zoo models --> https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
+
 ![Logo](https://storage.googleapis.com/model_garden_artifacts/TF_Model_Garden.png)
 
 # Welcome to the Model Garden for TensorFlow
