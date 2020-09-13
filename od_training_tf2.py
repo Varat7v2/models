@@ -81,10 +81,13 @@ def plot_detections(image_np,
       category_index,
       use_normalized_coordinates=True,
       min_score_thresh=0.8)
+  
+  if not os.path.exists('output'):
+      os.makedirs('output')
   if image_name:
-    plt.imsave(image_name, image_np_with_annotations)
-  else:
-    plt.imshow(image_np_with_annotations)
+    plt.imsave('output/' + image_name, image_np_with_annotations)
+  # else:
+  #   plt.imshow(image_np_with_annotations)
 
 # DATA PREPARATION
 # Load images and visualize
@@ -200,7 +203,7 @@ tf.keras.backend.set_learning_phase(True)
 
 batch_size = 8
 learning_rate = 0.01
-num_batches = 100
+num_batches = 50
 
 # Select variables in top layers to fine-tune.
 trainable_variables = detection_model.trainable_variables
@@ -328,17 +331,15 @@ for i in range(len(test_images_np)):
       figsize=(15, 20), 
       image_name="gif_frame_" + ('%02d' % i) + ".jpg")
 
-imageio.plugins.freeimage.download()
-
-anim_file = 'dog_test.gif'
-
-filenames = glob.glob('gif_frame_*.jpg')
-filenames = sorted(filenames)
-last = -1
-images = []
-for filename in filenames:
-  image = imageio.imread(filename)
-  images.append(image)
-
-imageio.mimsave(anim_file, images, 'GIF-FI', fps=2)
-display(IPyImage(open(anim_file, 'rb').read()))
+# MAKE GIF FILE OF OUTPUT IMAGES
+# imageio.plugins.freeimage.download()
+# anim_file = 'dog_test.gif'
+# filenames = glob.glob('gif_frame_*.jpg')
+# filenames = sorted(filenames)
+# last = -1
+# images = []
+# for filename in filenames:
+#   image = imageio.imread(filename)
+#   images.append(image)
+# imageio.mimsave(anim_file, images, 'GIF-FI', fps=2)
+# display(IPyImage(open(anim_file, 'rb').read()))
