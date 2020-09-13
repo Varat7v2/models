@@ -187,11 +187,11 @@ print('Done prepping data.')
 #       category_index)
 # plt.show()
 
-# Create model and restore weights for all but last layer
-# Download the checkpoint and put it into models/research/object_detection/test_data/
-os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
-os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
-os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
+# # Create model and restore weights for all but last layer
+# # Download the checkpoint and put it into models/research/object_detection/test_data/
+# os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
+# os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
+# os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
 
 tf.keras.backend.clear_session()
 print('Building model and restoring weights for fine-tuning...', flush=True)
@@ -234,7 +234,7 @@ tf.keras.backend.set_learning_phase(True)
 
 batch_size = 8
 learning_rate = 0.01
-num_batches = 50
+num_batches = 1
 
 # Select variables in top layers to fine-tune.
 trainable_variables = detection_model.trainable_variables
