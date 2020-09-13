@@ -189,9 +189,9 @@ print('Done prepping data.')
 
 # Create model and restore weights for all but last layer
 # Download the checkpoint and put it into models/research/object_detection/test_data/
-# os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
-# os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
-# os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
+os.system("wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
+os.system("tar -xf ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz")
+os.system("mv ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint models/research/object_detection/test_data/")
 
 tf.keras.backend.clear_session()
 print('Building model and restoring weights for fine-tuning...', flush=True)
