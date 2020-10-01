@@ -1,3 +1,9 @@
+# TensorFlow 1
+For direct API 1.0 --> https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1.md
+
+For direct zoo models --> https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md
+
+# TensorFlow 2
 For direct API 2.0 --> https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md
 
 For direct zoo models --> https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
